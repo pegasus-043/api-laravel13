@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -10,38 +11,10 @@ Route::get('/hello', function (Request $request) {
     ]);
 });
 
-// Listar registros
-Route::get('/users', function (Request $request) {
-    return response()->json([
-        'message' => 'List of users',
-        'status' => 'success'
-    ]);
-});
-// Crear registros
-Route::post('/users', function (Request $request) {
-    return response()->json([
-        'message' => 'User created successfully',
-        'status' => 'success'
-    ]);
-});
-// Recuperar un registro
-Route::get('/users/{id}', function (Request $request, $id) {
-    return response()->json([
-        'message' => 'User retrieved successfully: '.$id,
-        'status' => 'success'
-    ]);
-});
-// Actualizar un registro
-Route::put('/users/{id}', function (Request $request, $id) {
-    return response()->json([
-        'message' => 'User updated successfully: '.$id,
-        'status' => 'success'
-    ]);
-});
-// Eliminar un registro
-Route::delete('/users/{id}', function (Request $request, $id) {
-    return response()->json([
-        'message' => 'User deleted successfully: '.$id,
-        'status' => 'success'
-    ]);
-});
+// http://127.0.0.1:8000/api/
+
+Route::get('/users', [UserController::class, 'index']);
+Route::post('/users', [UserController::class, 'store']);
+Route::get('/users/{id}', [UserController::class, 'show']);
+Route::put('/users/{id}', [UserController::class, 'update']);
+Route::delete('/users/{id}', [UserController::class, 'destroy']);
