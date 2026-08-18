@@ -22,6 +22,8 @@ php artisan migrate
 php artisan migrate:rollback
 php artisan make:model Task
 php artisan db:seed
+php artisan make:factory Task
+php artisan migrate:fresh --seed
 ```
 
 
