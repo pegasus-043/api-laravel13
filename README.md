@@ -14,8 +14,14 @@
 ## Commands Used
 ```bash
 composer run dev
+php artisan install:api
 php artisan make:controller Api/UserController
 php artisan r:l
+php artisan make:migration create_tasks_table
+php artisan migrate
+php artisan migrate:rollback
+php artisan make:model Task
+php artisan db:seed
 ```
 
 
