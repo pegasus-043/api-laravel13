@@ -15,6 +15,7 @@
 ```bash
 composer run dev
 php artisan make:controller Api/UserController
+php artisan r:l
 ```
 
 

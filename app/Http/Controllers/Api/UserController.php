@@ -23,7 +23,7 @@ class UserController extends Controller
         ]);
     }
 
-    public function show($id)
+    public function show($user)
     {
         return response()->json([
             'message' => 'User details',
@@ -31,7 +31,7 @@ class UserController extends Controller
         ]);
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, $user)
     {
         return response()->json([
             'message' => 'User updated successfully',
@@ -39,7 +39,7 @@ class UserController extends Controller
         ]);
     }
 
-    public function destroy($id)
+    public function destroy($user)
     {
         return response()->json([
             'message' => 'User deleted successfully',
