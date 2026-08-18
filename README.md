@@ -24,6 +24,8 @@ php artisan make:model Task
 php artisan db:seed
 php artisan make:factory Task
 php artisan migrate:fresh --seed
+php artisan make:controller Api/TaskController --api
+php artisan r:l --name=tasks
 ```
 
 

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\TaskController;
 use App\Http\Controllers\Api\UserController;
 use App\Models\Task;
 use Illuminate\Http\Request;
@@ -21,16 +22,17 @@ Route::get('/hello', function (Request $request) {
 // Route::delete('/users/{id}', [UserController::class, 'destroy']);
 
 Route::apiResource('users', UserController::class);
+Route::apiResource('tasks', TaskController::class);
 
-Route::get('/prueba', function () {
+// Route::get('/prueba', function () {
 
-    $data = [
-        'body' => 'Tarea de prueba',
-        'user_id' => 1
-    ];
+//     $data = [
+//         'body' => 'Tarea de prueba',
+//         'user_id' => 1
+//     ];
 
-    $task = Task::create($data);
-    $task->save();
+//     $task = Task::create($data);
+//     $task->save();
 
-    return $task;
-});
+//     return $task;
+// });
