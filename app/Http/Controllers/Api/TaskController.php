@@ -44,7 +44,9 @@ class TaskController extends Controller
      */
     public function update(Request $request, string $task)
     {
-        //
+        $task = Task::findorFail($task);
+        $task->update($request->all());
+        return response()->json($task);
     }
 
     /**
