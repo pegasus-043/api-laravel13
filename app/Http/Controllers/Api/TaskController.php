@@ -33,18 +33,18 @@ class TaskController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $task)
+    public function show(Task $task)
     {
-        $task = Task::findorFail($task);
+        //$task = Task::findorFail($task);
         return response()->json($task);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $task)
+    public function update(Request $request, Task $task)
     {
-        $task = Task::findorFail($task);
+        // $task = Task::findorFail($task);
         $task->update($request->all());
         return response()->json($task);
     }
@@ -52,9 +52,9 @@ class TaskController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $task)
+    public function destroy(Task $task)
     {
-        $task = Task::findorFail($task);
+        // $task = Task::findorFail($task);
         $task->delete();
         return response()->json([
             'message' => 'Task deleted successfully',
