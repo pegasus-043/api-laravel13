@@ -26,6 +26,11 @@ class TaskController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'body' => 'required|string|max:255',
+            'user_id' => 'required|integer|exists:users,id',
+        ]);
+
         $task = Task::create($request->all());
         return response()->json($task, 201);
     }
@@ -44,7 +49,11 @@ class TaskController extends Controller
      */
     public function update(Request $request, Task $task)
     {
-        // $task = Task::findorFail($task);
+        $request->validate([
+            'body' => 'required|string|max:255',
+            'user_id' => 'required|integer|exists:users,id',
+        ]);
+
         $task->update($request->all());
         return response()->json($task);
     }
