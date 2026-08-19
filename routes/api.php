@@ -23,16 +23,3 @@ Route::get('/hello', function (Request $request) {
 
 Route::apiResource('users', UserController::class);
 Route::apiResource('tasks', TaskController::class);
-
-// Route::get('/prueba', function () {
-
-//     $data = [
-//         'body' => 'Tarea de prueba',
-//         'user_id' => 1
-//     ];
-
-//     $task = Task::create($data);
-//     $task->save();
-
-//     return $task;
-// });
