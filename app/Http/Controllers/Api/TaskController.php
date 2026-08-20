@@ -15,12 +15,13 @@ class TaskController extends Controller
      */
     public function index()
     {
-        $tasks = Task::all();
-        return response()->json([
-            'message' => 'List of tasks',
-            'status' => 'success',
-            'data' => $tasks
-        ]);
+        if(request('perPage')){
+            $tasks = Task::paginate(request('perPage'));
+        } else {
+            $tasks = Task::get();
+        }
+
+        return response()->json($tasks);
     }
 
     /**
