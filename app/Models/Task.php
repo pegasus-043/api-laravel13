@@ -17,4 +17,12 @@ class Task extends Model
     protected $guarded = [
 
     ];
+
+    /**
+     * Get the user that owns the task.
+     */
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

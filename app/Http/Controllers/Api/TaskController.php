@@ -15,13 +15,25 @@ class TaskController extends Controller
      */
     public function index()
     {
+        $tasks = Task::query();
+
         $select = request('select');
         $params = explode(',', $select);
 
+        if(request('include')){
+            $include = explode(',', request('include'));
+            $tasks = $tasks->with($include);
+
+        }
+
+        if(request('select')){
+            $tasks = $tasks->select($params);
+        }
+
         if(request('perPage')){
-            $tasks = Task::paginate(request('perPage'));
+            $tasks = $tasks->paginate(request('perPage'));
         } else {
-            $tasks = Task::select($params)->get();
+            $tasks = $tasks->get();
         }
 
         return response()->json($tasks);
