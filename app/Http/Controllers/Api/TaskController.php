@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreTaskRequest;
 use App\Http\Requests\UpdateTaskRequest;
 use App\Models\Task;
-use Illuminate\Database\Eloquent\Attributes\ScopedBy;
 use Illuminate\Http\Request;
 
 
@@ -17,13 +16,7 @@ class TaskController extends Controller
      */
     public function index()
     {
-        $tasks = Task::query();
-
-        if(request('perPage')){
-            $tasks = $tasks->paginate(request('perPage'));
-        } else {
-            $tasks = $tasks->get();
-        }
+        $tasks = Task::getOrPaginate();
 
         return response()->json($tasks);
     }
