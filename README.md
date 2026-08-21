@@ -28,6 +28,8 @@ php artisan make:controller Api/TaskController --api
 php artisan r:l --name=tasks
 php artisan make:request StoreTaskRequest
 php artisan make:request UpdateTaskRequest
+php artisan make:scope IncludeScope
+php artisan make:scope SelectScope
 ```
 
 

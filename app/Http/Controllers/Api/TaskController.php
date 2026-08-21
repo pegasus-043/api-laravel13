@@ -6,7 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreTaskRequest;
 use App\Http\Requests\UpdateTaskRequest;
 use App\Models\Task;
+use Illuminate\Database\Eloquent\Attributes\ScopedBy;
 use Illuminate\Http\Request;
+
 
 class TaskController extends Controller
 {
@@ -16,19 +18,6 @@ class TaskController extends Controller
     public function index()
     {
         $tasks = Task::query();
-
-        $select = request('select');
-        $params = explode(',', $select);
-
-        if(request('include')){
-            $include = explode(',', request('include'));
-            $tasks = $tasks->with($include);
-
-        }
-
-        if(request('select')){
-            $tasks = $tasks->select($params);
-        }
 
         if(request('perPage')){
             $tasks = $tasks->paginate(request('perPage'));
